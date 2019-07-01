@@ -21,6 +21,7 @@ This web page documents how to use the [sebp/elk](https://hub.docker.com/r/sebp/
 - [Tweaking the image](#tweaking-image)
 	- [Updating Logstash's configuration](#updating-logstash-configuration)
 	- [Installing Elasticsearch plugins](#installing-elasticsearch-plugins)
+	- [Mapping Elasticsearch](#mapping-elasticsearch)
 	- [Installing Logstash plugins](#installing-logstash-plugins)
 	- [Installing Kibana plugins](#installing-kibana-plugins)
 - [Persisting log data](#persisting-log-data)
@@ -464,6 +465,12 @@ A `Dockerfile` like the following will extend the base image and install the [Ge
 		install -b ingest-geoip
 
 You can now build the new image (see the *[Building the image](#building-image)* section above) and run the container in the same way as you did with the base image.
+
+### Mapping Elasticsearch <a name="mapping-elasticsearch"></a>
+
+From filebeat fields.yaml just run:
+
+    ./filebeat setup --template -E output.logstash.enabled=false -E output.elasticsearch.enabled=true
 
 ### Installing Logstash plugins <a name="installing-logstash-plugins"></a>
 
