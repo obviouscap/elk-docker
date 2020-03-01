@@ -1,15 +1,22 @@
-# Docker Compose file for ELK stack
-
-# Build with:
-# docker-compose build elk
-
-# Run with:
-# docker-compose up
-
-elk:
-  build: .
-  ports:
-    - "5601:5601"
-    - "9200:9200"
-    - "5040:5040"
-    - "5044:5044"
+version: '3'
+services:
+  elk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5040:5040"
+      - "5041:5041"
+      - "5044:5044"
+      - "5045:5045"
+    volumes:
+      - /home/webaib/docker/elk/elasticsearch:/var/lib/elasticsearch

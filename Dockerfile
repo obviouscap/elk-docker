@@ -141,6 +141,7 @@ ADD ./logstash-beats.key /etc/pki/tls/private/logstash-beats.key
 ADD pipelines.yml ${LOGSTASH_PATH_SETTINGS}/pipelines.yml
 
 # filters
+ADD ./01-tcp-input.conf ${LOGSTASH_PATH_CONF}/conf.d/01-tcp-input.conf
 ADD ./02-beats-input.conf ${LOGSTASH_PATH_CONF}/conf.d/02-beats-input.conf
 ADD ./09-java.conf ${LOGSTASH_PATH_CONF}/conf.d/09-java.conf
 ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
